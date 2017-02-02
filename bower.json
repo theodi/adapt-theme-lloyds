@@ -5,9 +5,9 @@
     "version": "0.3.1",
     "homepage": "https://github.com/theodi/adapt-theme-lloyds/",
     "issues": "https://github.com/theodi/adapt-theme-lloyds/issues",
-    "displayName": "European Data Science Academy",
-    "theme": "European Data Science Academy",
-    "description": "A custom theme for European Data Science Academy modules",
+    "displayName": "Lloyds of London",
+    "theme": "Lloyds of London",
+    "description": "A custom theme for Lloyds of London modules",
     "main": "js/lloyds.js",
     "keywords": [
         "adapt-plugin",
