@@ -2,7 +2,6 @@
 // =============
 
 @white: #fafafa;
-@black: #141414;
 @blue: #078292;
 @light-grey: #78909c;
 @mid-grey: #6d6d6d;
@@ -11,18 +10,24 @@
 @green: #82ca9c;
 @main-title: #363535;
 
+@blue4: #0a4bb7;
+@blue2: #282f54;
+@black: #141414;
+@white: #fafafa;
+@steel3: #888684;
+
 @default-width:1024px;
 
-@odi-color-one:#0a4bb7; // Lloyds blue 4 (secondary )
-@odi-color-two:#d5d5d5; // Lloyds Steel
-@odi-color-three:#d5d5d5; // Lloyds Steel
-@odi-color-four:#282f54; // Lloyds blue 2
-@odi-color-five:#282f54; // Lloyds blue 2
-@odi-color-six:#282f54; // Lloyds blue 2
-@odi-color-seven:@black; // LLoyds black
-@odi-color-eight:@black; // LLoyds black
-@odi-color-nine:@black; // LLoyds black
-@odi-color-ten:@black; // LLoyds black
+@odi-color-one:@steel3;
+@odi-color-two:@steel3;
+@odi-color-three:@blue2;
+@odi-color-four:@blue2;
+@odi-color-five:@black;
+@odi-color-six:@black;
+@odi-color-seven:@blue4;
+@odi-color-eight:@blue4;
+@odi-color-nine:@blue4;
+@odi-color-ten:@blue4;
 @menu-header-background-color: @odi-color-three;
 @primary-color:@odi-color-one;
 @secondary-color:@odi-color-three;
@@ -33,14 +38,14 @@
 // ===========
 
 // Components
-@primary-color: @odi-color-seven;
+@primary-color: @odi-color-three;
 @primary-color-inverted: @white;
 // Buttons
-@secondary-color: @odi-color-ten;
+@secondary-color: @odi-color-one;
 @secondary-color-inverted: @white;
 // Navigation Bar
-@tertiary-color: #000;
-@tertiary-color-inverted: #fff;
+@tertiary-color: @black;
+@tertiary-color-inverted: @white;
 // Drawer
 @quaternary-color: @dark-grey;
 @quaternary-color-inverted: @white;
@@ -69,7 +74,7 @@
 @title-color-inverted: @primary-color-inverted;
 
 // Buttons
-@button-color: @odi-color-nine;
+@button-color: @odi-color-one;
 @button-color-inverted: @primary-color-inverted;
 @button-color-hover: darken(@button-color, 40%);
 @button-color-disabled: @disabled-color;
