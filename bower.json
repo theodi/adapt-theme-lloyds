@@ -1,0 +1,24 @@
+{
+    "name": "adapt-theme-lloyds",
+    "repository": "git@github.com:theodi/adapt-theme-lloyds.git",
+    "framework": "^2.0.0",
+    "version": "0.3.1",
+    "homepage": "https://github.com/theodi/adapt-theme-lloyds/",
+    "issues": "https://github.com/theodi/adapt-theme-lloyds/issues",
+    "displayName": "European Data Science Academy",
+    "theme": "European Data Science Academy",
+    "description": "A custom theme for European Data Science Academy modules",
+    "main": "js/lloyds.js",
+    "keywords": [
+        "adapt-plugin",
+        "adapt-theme"
+    ],
+    "licenlloyds": "GPLv3",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}
