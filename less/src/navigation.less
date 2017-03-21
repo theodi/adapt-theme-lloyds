@@ -23,6 +23,11 @@
         }
     }
 
+    .clientLogo {
+        float: left;
+        height: (@navigation-padding * 2) + @icon-size;
+    }
+
     @media all and (max-width:(@device-width-large - 1px)) {
         width: 1px;
         min-width: 100%;
@@ -36,6 +41,9 @@
         height:@navigation-height-mobile;
         .icon {
             padding: 14px;
+        }
+        .clientLogo {
+            height: @navigation-height-mobile;
         }
     }
 

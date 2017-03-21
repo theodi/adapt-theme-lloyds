@@ -3,7 +3,7 @@ define(function(require) {
 	
 	var Adapt = require('coreJS/adapt');
 	var Backbone = require('backbone');
-	var ThemeBlock = require('theme/adapt-theme-edsa/js/theme-block');
+	var ThemeBlock = require('theme/adapt-theme-lloyds/js/theme-block');
 	var emailPresent = false;
 
 	// Block View
@@ -20,6 +20,12 @@ define(function(require) {
 				el: view.$el
 			});
 		}
+	});
+
+	Adapt.on('pageView:ready', function(view) {
+		$('.intro-logo .graphic-widget img').attr('src','adapt/css/assets/intro-logo.png');
+		$('.intro-logo .graphic-widget img').attr('data-large','adapt/css/assets/intro-logo.png');
+		$('.intro-logo .graphic-widget img').attr('data-small','adapt/css/assets/intro-logo.png');
 	});
 
 	Adapt.on('userDetails:updated', function(user) {

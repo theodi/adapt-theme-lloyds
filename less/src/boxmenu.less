@@ -1,10 +1,11 @@
 .menu {
 	.hidden { display: none; } 
 
-	background: @background-color;
+	background: white;
 
 	.menu-container {
 		width: 100%;
+		padding-top: 34px;
 	}
 
 	.menu-container-inner {
@@ -12,6 +13,7 @@
 	}
 
 	.menu-header {
+		display: none;
 		margin-bottom: -30px;
 		background: url('assets/blobs.png');
 		background-size: cover;
@@ -37,6 +39,7 @@
 	}
 
 	.menu-title {
+		display: none;
 		margin: @menu-block-title-margin-top 0 @menu-block-title-margin-bottom;
 		color: @foreground-color-inverted;
 	}
@@ -75,6 +78,7 @@
 
 		&.nth-child-even{
 			.menu-item-inner{
+				background-color: @odi-color-one;
 				margin-left:2%;
 		        .dir-rtl & {
 		            margin-right:2%;
@@ -84,12 +88,24 @@
 
 		&.nth-child-odd {
 			.menu-item-inner {
+				background-color: @odi-color-four;
 				margin-right:2%;
                 .dir-rtl & {
                     margin-left:2%;
                 }
 			}
 		}
+		&.nth-child-3, &.nth-child-7, &.nth-child-11 {
+			.menu-item-inner {
+				background-color: @odi-color-seven;
+			}
+		}
+		&.nth-child-4, &.nth-child-8, &.nth-child-12 {
+			.menu-item-inner {
+				background-color: @odi-color-five;
+			}
+		}
+
 	}
 
 	.menu-item-inner {
@@ -177,11 +193,11 @@
 		
 		button {
 			padding: @button-padding-top (@button-padding-right*2) @button-padding-bottom (@button-padding-left*2);
-			background-color:@button-color;
+			background-color:darken(@button-color, 20%);
 			color:@button-text-color;
 			
 			&:hover {
-				background-color:darken(@button-color, 20%);
+				background-color:darken(@button-color, 30%);
 				color:@button-text-color-hover;
 			}
 			
