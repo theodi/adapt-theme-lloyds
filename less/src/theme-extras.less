@@ -19,6 +19,16 @@ body {
 	padding-right: 0;
 	float: left;
 }
+.menu {
+	.menu-item {
+		@media all and (max-width: @device-width-medium) {
+			width: 50%;
+		}
+		@media all and (max-width: @device-width-small) {
+			width: 100%;
+		}
+	}
+}
 h5 {
 	font-size: 21.25px;
 	line-height: 31.25px;
@@ -30,7 +40,6 @@ h5 {
 }
 .socialbuttons-component {
 	position: relative;
-    top: 10px;
     text-align: right;
 }
 .about-links {

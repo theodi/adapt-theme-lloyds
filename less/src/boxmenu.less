@@ -74,6 +74,12 @@
 		box-decoration-break: clone;
 	}
 	.menu-item {
+		@media all and (max-width: @device-width-medium) {
+			width: 50%;
+		}
+		@media all and (max-width: @device-width-small) {
+			width: 100%;
+		}
 		margin: 0 auto 30px;
 
 		&.nth-child-even{
@@ -117,6 +123,9 @@
 		color: @menu-item-text-color;
 		@media all and (min-width: (@device-width-large + 20px)) {
 			min-height: @menu-height;
+		}
+		@media all and (max-width: (@device-width-large + 19px)) {
+			min-height: (@menu-height + 50px);
 		}
 	}
 
@@ -202,7 +211,7 @@
 			}
 			
 			&.visited {
-				background-color: @button-color;
+				background-color:darken(@button-color, 20%);
 				color:@button-text-color-disabled;
 			}
 		}
