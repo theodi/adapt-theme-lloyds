@@ -2,7 +2,7 @@
     "name": "adapt-theme-lloyds",
     "repository": "git@github.com:theodi/adapt-theme-lloyds.git",
     "framework": "^2.0.0",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "homepage": "https://github.com/theodi/adapt-theme-lloyds/",
     "issues": "https://github.com/theodi/adapt-theme-lloyds/issues",
     "displayName": "Lloyds of London",
