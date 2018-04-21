@@ -26,6 +26,16 @@ define(function(require) {
 		$('.intro-logo .graphic-widget img').attr('src','adapt/css/assets/intro-logo.png');
 		$('.intro-logo .graphic-widget img').attr('data-large','adapt/css/assets/intro-logo.png');
 		$('.intro-logo .graphic-widget img').attr('data-small','adapt/css/assets/intro-logo.png');
+		try {
+            email = Adapt.course.get('_globals')._extensions._aboutPage.contactEMail;
+            text = Adapt.course.get('_globals')._extensions._aboutPage.contactLinkText;
+			if (!email) { email = Adapt.course.get('_globals')._theme._ukraine.contactEMail; }
+			if (!text) { text = Adapt.course.get('_globals')._theme._ukraine.contactLinkText; }
+			if( $('.about-links').size() > 0) {
+            	$('.about-links').append(' | ');
+        	} 
+        	$('.about-links').append('<a class="contact" href="mailto:'+email+'">'+text+'</a>');
+		} catch (err) {}
 	});
 
 	Adapt.on('userDetails:updated', function(user) {
@@ -69,9 +79,25 @@ define(function(require) {
 	function showMessage(phraseId) {
 		console.log("In show message");
 		
+		var saveTitle = Adapt.course.get('_trackingHub').saveTitle;
+		var saveBody = Adapt.course.get('_trackingHub').saveBody;
+		var items = Adapt.course.get('_trackingHub').fields;
+
+		var fields = "<div align='center'>";
+		_.each(items, function(item) {
+			var required = "";
+			if(item.required) {
+				required = "required";
+			}
+			fields += item.title + ": <input id='"+item.id+"' type='" + item.type + "' class='email-input' placeholder='" + item.placeholder + "' " + required + "></input><br/>";
+		});
+		fields += "<br/><br/><input type='submit' id='email_submit' value='OK' style='padding: 10px;' class='notify-popup-done course_link' role='button' aria-label='submit email' onClick='getUser();'></input></div>";
+
+		saveBody = saveBody + fields;
+
 		var alertObject = {
-            title: "Save your progress, earn rewards...",
-            body: "<p>Please enter your <b>email</b> address in the box below. You will receive an email linking to your unique profile so you can save your progress, earn rewards and resume your learning on any device.</p><br/><div align='center'><input type='email' id='email' class='email-input' placeholder='Email address' required></input><br/><br/><input type='submit' id='email_submit' value='OK' style='padding: 10px;' class='notify-popup-done course_link' role='button' aria-label='submit email' onClick='getEmail();'></input></div>"
+            title: saveTitle,
+            body: saveBody
         };
         
         Adapt.once("notify:closed", function() {
@@ -81,6 +107,8 @@ define(function(require) {
         Adapt.trigger('notify:popup', alertObject);
 
         Adapt.trigger('tutor:opened');
+
+        $("#countries").msDropdown();
 	}
 
 	function addListeners() {
@@ -137,32 +165,36 @@ define(function(require) {
 
 });
 
+function validateInput(user) {
+	valid = true;
+	var Adapt = require('coreJS/adapt');
+	var items = Adapt.course.get('_trackingHub').fields;
+	_.each(items, function(item) {
+		if (item.required && !user[item.id]) {
+			valid = false;
+		}
+		if (item.type == "email" && !validateEmail(user[item.id])) {
+			valid = false;
+		}
+	});
+	return valid;
+}
+
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
 
-function getEmail() {
+function getUser() {
 	var Adapt = require('coreJS/adapt');
-	email = $("input[id='email']").val();
-	if (validateEmail(email)) {
-		user = {};
-		user.email = email;
+	user = {};
+	var items = Adapt.course.get('_trackingHub').fields;
+
+	_.each(items, function(item) {
+		user[item.id] = $("input[id='" + item.id + "']").val();
+	});
+
+	if (validateInput(user)) {
 		Adapt.trigger('userDetails:updated',user);
-	}
-}
-function callTrigger(type) {
-	var Adapt = require('coreJS/adapt');
-	if (type == "skillsFramework:showSkills") {
-		Adapt.trigger('skillsFramework:showSkills');
-	}
-	if (type == "aboutPage:showAboutPage") {
-		Adapt.trigger('aboutPage:showAboutPage');
-	}
-	if (type == "licencePage:showLicencePage") {
-		Adapt.trigger('licencePage:showLicencePage');
-	}
-	if (type == "credits:showCredits") {
-		Adapt.trigger('credits:showCredits');
 	}
 }
