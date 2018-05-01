@@ -25,7 +25,12 @@
 
     .clientLogo {
         float: left;
-        height: (@navigation-padding * 2) + @icon-size;
+        //height: (@navigation-padding * 2) + @icon-size;
+        height: (@navigation-height / 3) * 2;
+	margin-left: @navigation-height;
+    	@media all and (max-width:(@device-width-large - 1px)) {
+    		margin-left: 20px;
+	}
     }
 
     @media all and (max-width:(@device-width-large - 1px)) {
@@ -43,7 +48,7 @@
             padding: 14px;
         }
         .clientLogo {
-            height: @navigation-height-mobile;
+            height: (@navigation-height-mobile / 3) * 2;
         }
     }
 
